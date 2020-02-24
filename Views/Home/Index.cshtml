@@ -1,0 +1,27 @@
+﻿@model List<Beer>
+@{
+    ViewData["Title"] = "Beers";
+}
+
+@await Html.PartialAsync("_FilterEntity")
+
+<div class="container-fluid">
+    <br>
+    <h1 class="text-center">Production</h1>
+    <div class="row text-center mb-5">
+        @foreach (Beer beer in Model)
+        {
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="row">
+                    <img src="@beer.ImageUrl" width="320" height="280" class="mx-auto rounded" alt="beer image">
+                    <div class="col-12">
+                        <a href="" class="text-info">
+                            @beer.Name - @beer.Price
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

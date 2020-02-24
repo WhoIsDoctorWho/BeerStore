@@ -1,0 +1,17 @@
+﻿@model Beer
+@{
+    ViewData["Title"] = "Beer";
+}
+
+<div class="container text-center">
+    <h1>@Model.Name</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <img src="@Model.ImageUrl" width="400" height="600" class="mx-auto rounded">
+        </div>    
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <p>Price: @Model.Price grn</p>
+            <p>@Model.Description</p>            
+        </div>
+    </div>    
+</div>

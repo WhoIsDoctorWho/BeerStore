@@ -1,0 +1,48 @@
+﻿@using BeerStore.Models
+@model ProductViewModel
+@{
+    ViewData["Title"] = "Beers";
+}
+
+@await Html.PartialAsync("_FilterEntity")
+
+<div class="container-fluid">
+    <br>
+    <h1 class="text-center">Production</h1>
+    <div class="row text-center mb-5">
+        @foreach (Beer beer in Model.Beers)
+        {
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="row">
+                    <img src="@beer.ImageUrl" width="320" height="280" class="mx-auto rounded" alt="beer image">
+                    <div class="col-12">
+                        <a asp-action="Beers" asp-route-id="@beer.id" class="text-info">
+                            <b>@beer.Name</b> - @beer.Price
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@if (Model.PaginationModel.HasPrevPage)
+{
+    <a asp-action="Beers"
+       asp-route-page="@(Model.PaginationModel.PageNumber - 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"       
+       asp-route-sortorder="@(Model.SortModel.Current)"
+       class="btn  btn-outline-dark">        
+        Previous
+    </a>
+}
+@if (Model.PaginationModel.HasNextPage)
+{
+    <a asp-action="Beers"
+       asp-route-page="@(Model.PaginationModel.PageNumber + 1)"
+       asp-route-tosearch="@(Model.FilterModel.ToSearch)"       
+       asp-route-sortorder="@(Model.SortModel.Current)"
+       class="btn btn-outline-dark">
+        Next
+    </a>
+}
